@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "interamt",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
