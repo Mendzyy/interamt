@@ -4,23 +4,30 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end" class="ion-margin-end">
-      <ion-button expand="block" color="primary">
-         
+      <ion-button
+        (click)="addItem()"
+        expand="block"
+        shape="round"
+        fill="outline"
+        color="medium"
+        class="notexttransformation"
+      >
+        {{ page === "Länder" ? 'Land' : 'Projekt' }} hinzufügen
       </ion-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>{{ page }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
+      <ion-title size="large">{{ page }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
+    <strong class="capitalize">{{ page   }}</strong>
     <p>
       Explore
       <a
