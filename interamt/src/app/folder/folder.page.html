@@ -17,25 +17,25 @@
     </ion-buttons>
     <ion-title>{{ page }}</ion-title>
   </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar
+      [(ngModel)]="searchTerm"
+      (ionChange)="searchItems(searchTerm)"
+      debounce="400"
+      animated="true"
+      #searchbar
+    ></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ page }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ page   }}</strong>
-    <p>
-      Explore
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://ionicframework.com/docs/components"
-        >UI Components</a
-      >
-    </p>
-  </div>
+  <!-- Countries List -->
+  <ion-list *ngIf="page === 'Länder'">
+    <ion-item *ngFor="let country of aCountries | async">
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+      <ion-label>{{country?.name}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- Projects List -->
+  <ion-list *ngIf="page === ''"> </ion-list>
 </ion-content>

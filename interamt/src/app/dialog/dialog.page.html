@@ -1,9 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>dialog</ion-title>
+    <ion-buttons slot="end" class="ion-margin-end">
+      <ion-button
+        (click)="closeModal()"
+        expand="block"
+        shape="round"
+        fill="outline"
+        color="danger"
+      >
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{page}} hinzufügen</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid class="ion-padding" *ngIf="page === 'Land'">
+    <ion-row>
+      <ion-col>
+        <ion-item #country_name>
+          <ion-label position="floating"> Name des Landes: </ion-label>
+          <ion-select
+            interface="popover"
+            multiple="false"
+            [ngModel]="country.name"
+          >
+            <ion-select-option
+              *ngFor="let cs of aList_Countries"
+              [value]="cs.Name"
+            >
+              <ion-label>{{cs.Name}}</ion-label>
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating"> ISO Code </ion-label>
+          <ion-input [disabled]="country.name === ''"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="ion-padding" *ngIf="page === 'Projekt'"> </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-button expand="block" shape="round" fill="outline" color="primary">
+    Hinzufügen
+  </ion-button>
+</ion-footer>
